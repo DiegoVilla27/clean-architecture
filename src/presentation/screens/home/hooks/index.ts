@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import UserRepositoryImpl from '../../../../data/respository';
+import userUseCases from '../../../../core/services';
 import { UserEntity } from '../../../../domain/entities';
-import UserUseCases from '../../../../domain/use-cases';
 
 /**
  * Custom hook to manage user data operations.
@@ -18,7 +17,6 @@ import UserUseCases from '../../../../domain/use-cases';
 export const useUsers = () => {
 
   const [users, setUsers] = useState<UserEntity[]>([]);
-  const userUseCases = new UserUseCases(new UserRepositoryImpl());
 
   useEffect(() => {
     fetchUsers();

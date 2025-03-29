@@ -1,4 +1,4 @@
-import ENVIRONMENTS from "../../config/environments";
+import ENVIRONMENTS from "../../core/environments";
 import { UserModel, UserModelResponse } from "../models";
 
 /**
