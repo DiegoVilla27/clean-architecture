@@ -1,15 +1,22 @@
-import { UserEntity, UserEntityResponse } from "../../domain/entities";
-import UserRepository from "../../domain/respository";
-import UserApiDataSource from "../data-source";
-import { UserModel, UserModelResponse } from "../models";
+import ENVIRONMENTS from "../../../core/environments";
+import { UserEntity, UserEntityResponse } from "../../../domain/entities/users";
+import UserApiDataSource from "../../data-source/users";
+import { UserModel, UserModelResponse } from "../../models/users";
+import BaseRepository from "../base";
 
-export class UserRepositoryImpl extends UserRepository {
-
+/**
+ * UserRepositoryImpl is an implementation of the BaseRepository for managing user data.
+ * It interacts with the UserApiDataSource to perform CRUD operations on user data.
+ *
+ * @extends BaseRepository<UserModel>
+ */
+export class UserRepositoryImpl extends BaseRepository<UserModel> {
   private dataSource: UserApiDataSource;
 
   constructor() {
-    super();
-    this.dataSource = new UserApiDataSource();
+    const url: string = `${ENVIRONMENTS.api}/users`;
+    super(url);
+    this.dataSource = new UserApiDataSource(url);
   }
 
   /**

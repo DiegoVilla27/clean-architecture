@@ -1,4 +1,4 @@
-import { UserEntity, UserEntityResponse } from "../../domain/entities";
+import { UserEntity, UserEntityResponse } from "../../../domain/entities/users";
 
 /**
  * Represents a user model with properties for identification and address.

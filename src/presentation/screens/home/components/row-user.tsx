@@ -1,4 +1,4 @@
-import { UserEntity } from "../../../../domain/entities";
+import { UserEntity } from "../../../../domain/entities/users";
 
 /**
  * Renders a table row displaying user information with edit and delete options.

@@ -1,4 +1,4 @@
-import { UserEntity } from "../../../domain/entities";
+import { UserEntity } from "../../../domain/entities/users";
 import {
   RowUser,
   RowUserEmpty,

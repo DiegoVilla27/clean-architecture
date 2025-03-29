@@ -5,8 +5,8 @@
  * This module initializes and exports a single instance of UserUseCases, 
  * preventing multiple instantiations and ensuring consistent data handling.
  */
-import UserRepositoryImpl from "../../data/respository";
-import UserUseCases from "../../domain/use-cases";
+import UserRepositoryImpl from "../../../data/respository/users";
+import UserUseCases from "../../../domain/use-cases/users";
 
 /**
  * Instantiate the UserRepository implementation.

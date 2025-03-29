@@ -1,5 +1,5 @@
 export const ENVIRONMENTS = {
-  api: 'https://dummyjson.com/users'
+  api: 'https://dummyjson.com'
 };
 
 export default ENVIRONMENTS;

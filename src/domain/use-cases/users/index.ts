@@ -1,5 +1,5 @@
-import { UserEntity, UserEntityResponse } from "../entities";
-import UserRepository from "../respository";
+import { UserEntity, UserEntityResponse } from "../../entities/users";
+import UserRepository from "../../respository/users";
 
 /**
  * UserUseCases class provides methods to interact with user data
