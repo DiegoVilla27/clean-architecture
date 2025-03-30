@@ -1,31 +1,17 @@
+import ENVIRONMENTS from "../../../core/environments";
 import { UserModel, UserModelResponse } from "../../models/users";
 
 /**
- * UserApiDataSource provides methods to interact with a user API.
+ * A data source class for interacting with the user API.
  * 
- * @property {string} url - The base URL of the user API.
- * 
- * @constructor
- * @param {string} url - Initializes the data source with the API's base URL.
- * 
- * @method getAllUsers
- * @returns {Promise<UserModelResponse>} - Fetches all users from the API.
- * 
- * @method updateUser
- * @param {UserModel} user - The user data to update.
- * @returns {Promise<UserModel>} - Updates a user and returns the updated user data.
- * 
- * @method deleteUser
- * @param {number} id - The ID of the user to delete.
- * @returns {Promise<UserModel>} - Deletes a user and returns the deleted user data.
+ * Methods:
+ * - getAllUsers: Fetches all users from the API and returns a UserModelResponse.
+ * - updateUser: Updates a user on the API and returns the updated UserModel.
+ * - deleteUser: Deletes a user from the API by ID and returns the deleted UserModel.
  */
 export class UserApiDataSource {
 
-  private url: string;
-
-  constructor(url: string) {
-    this.url = url;
-  }
+  private url: string = `${ENVIRONMENTS.api}/users`;
 
   async getAllUsers(): Promise<UserModelResponse> {
     const response = await fetch(this.url, { method: 'GET' });

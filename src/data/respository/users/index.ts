@@ -1,22 +1,21 @@
-import ENVIRONMENTS from "../../../core/environments";
 import { UserEntity, UserEntityResponse } from "../../../domain/entities/users";
+import UserRepository from "../../../domain/respository/users";
 import UserApiDataSource from "../../data-source/users";
 import { UserModel, UserModelResponse } from "../../models/users";
-import BaseRepository from "../base";
 
 /**
- * UserRepositoryImpl is an implementation of the BaseRepository for managing user data.
- * It interacts with the UserApiDataSource to perform CRUD operations on user data.
+ * Implementation of the UserRepository interface using a data source.
  *
- * @extends BaseRepository<UserModel>
+ * This class provides methods to interact with the user data source,
+ * including retrieving, updating, and deleting user information.
+ * It converts between UserEntity and UserModel representations as needed.
  */
-export class UserRepositoryImpl extends BaseRepository<UserModel> {
+export class UserRepositoryImpl extends UserRepository {
   private dataSource: UserApiDataSource;
 
   constructor() {
-    const url: string = `${ENVIRONMENTS.api}/users`;
-    super(url);
-    this.dataSource = new UserApiDataSource(url);
+    super();
+    this.dataSource = new UserApiDataSource();
   }
 
   /**
