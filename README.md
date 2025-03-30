@@ -1,54 +1,31 @@
-# React + TypeScript + Vite
+# ReactCleanArchitecture 📁
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project base using clean architecture to CRUD users.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- This project was generated with [Vite](https://vitejs.dev/guide/) version 6.2.0
+```bash
+npm create vite@latest clean-architecture -- --template react-ts
 ```
+- React - Version 10.0.0
+- Node - Version 20.12.2
+- Npm - Version 10.5.0
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development server 🚀
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+for a dev server and navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
+
+## Commits 📝
+
+Commit Structure Guidelines:
+
+- `feat: Subject` (Introduces a new feature)
+- `fix: Subject` (Resolves a bug or issue)
+- `styles: Subject` (Updates styles such as SCSS, CSS, Stylus, Less, etc.)
+- `docs: Subject` (Modifies documentation, including README and environment configurations)
+- `test: Subject` (Adds or updates unit tests or end-to-end tests)
+- `refactor: Subject` (Improves existing code without changing functionality)
+
+> IMPORTANT❗️ _`Subject is sentence-case`_
