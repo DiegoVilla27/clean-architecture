@@ -4,7 +4,7 @@ import { UserEntity, UserEntityResponse } from "@domain/entities/users";
  * Represents a user model with properties for identification and address.
  * Provides a method to convert the user model to a UserEntity.
  *
- * @property {number} id - The unique identifier for the user.
+ * @property {string} id - The unique identifier for the user.
  * @property {string} firstName - The first name of the user.
  * @property {number} age - The age of the user.
  * @property {Object} address - The address details of the user.
@@ -17,26 +17,26 @@ import { UserEntity, UserEntityResponse } from "@domain/entities/users";
  * @returns {UserEntity} The converted UserEntity instance.
  */
 export class UserModel {
-  id: number;
+  id: string;
   firstName: string;
   age: number;
   address: {
     country: string;
   };
 
-  constructor(id: number, firstName: string, age: number, address: { country: string }) {
+  constructor(id: string, firstName: string, age: number, address: { country: string }) {
     this.id = id;
     this.firstName = firstName;
     this.age = age;
     this.address = address;
   }
 
-  public toUserEntity(user: UserModel): UserEntity {
+  public toUserEntity(): UserEntity {
     return new UserEntity(
-      user.id,
-      user.firstName ?? '',
-      user.age ?? 0,
-      user.address.country ?? ''
+      this.id,
+      this.firstName ?? '',
+      this.age ?? 0,
+      this.address.country ?? ''
     );
   }
 }
@@ -74,12 +74,12 @@ export class UserModelResponse {
     this.users = users;
   }
 
-  public toUserEntityResponse(userModelResponse: UserModelResponse): UserEntityResponse {
+  public toUserEntityResponse(): UserEntityResponse {
     return new UserEntityResponse(
-      userModelResponse.limit,
-      userModelResponse.skip,
-      userModelResponse.total,
-      userModelResponse.users.map((user) =>
+      this.limit,
+      this.skip,
+      this.total,
+      this.users.map((user) =>
         new UserEntity(
           user.id,
           user.firstName ?? '',

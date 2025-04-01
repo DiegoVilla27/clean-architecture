@@ -1,7 +1,7 @@
-import { UserEntity, UserEntityResponse } from "@domain/entities/users";
-import UserRepository from "@domain/respository/users";
 import UserApiDataSource from "@data/data-source/users";
 import { UserModel, UserModelResponse } from "@data/models/users";
+import { UserEntity, UserEntityResponse } from "@domain/entities/users";
+import UserRepository from "@domain/respository/users";
 
 /**
  * Implementation of the UserRepository interface using a data source.
@@ -19,9 +19,11 @@ export class UserRepositoryImpl extends UserRepository {
   }
 
   /**
-   * Retrieves all users from the data source.
+   * Retrieves all users from the data source and converts the response
+   * into a UserEntityResponse object.
    *
-   * @returns A promise that resolves to a {@link UserEntityResponse} containing the list of users.
+   * @returns {Promise<UserEntityResponse>} A promise that resolves to a UserEntityResponse
+   * containing the user data.
    */
   async getAllUsers(): Promise<UserEntityResponse> {
     const res = await this.dataSource.getAllUsers();
@@ -31,59 +33,76 @@ export class UserRepositoryImpl extends UserRepository {
       res.total,
       res.users
     );
-    return userEntityResponse.toUserEntityResponse(userEntityResponse);
+    return userEntityResponse.toUserEntityResponse();
   };
 
   /**
-   * Updates a user in the data source.
+   * Creates a new user by converting a UserEntity to a UserModel and
+   * delegating the creation to the data source. Returns the created
+   * user as a UserEntity.
    *
-   * @param user - The {@link UserEntity} to be updated.
-   * @returns A promise that resolves to the updated {@link UserEntity}.
-   *
-   * @remarks
-   * This function takes a {@link UserEntity} as input, converts it to a {@link UserModel},
-   * sends the updated user data to the data source, and then converts the response back to a {@link UserEntity}.
-   *
-   * @throws Will throw an error if the data source operation fails.
+   * @param {UserEntity} user - The UserEntity object containing user details.
+   * 
+   * @returns {Promise<UserEntity>} A promise that resolves to the created UserEntity.
    */
-  async updateUser(user: UserEntity): Promise<UserEntity> {
-    const userModel = new UserModel(
+  async createUser(user: UserEntity): Promise<UserEntity> {
+    const res = await this.dataSource.createUser(new UserModel(
       user.id,
       user.name,
       user.age,
       { country: user.country }
-    );
-    const res = await this.dataSource.updateUser(userModel);
-    const userUpdated = new UserModel(
+    ));
+
+    const userModel = new UserModel(
       res.id,
       res.firstName,
       res.age,
       { country: res.address.country }
     );
-    return userUpdated.toUserEntity(userUpdated);
+
+    return userModel.toUserEntity();
   }
 
   /**
-   * Deletes a user from the data source.
+   * Updates an existing user by converting a UserEntity to a UserModel and
+   * delegating the update to the data source. Returns the updated
+   * user as a UserEntity.
    *
-   * @param id - The unique identifier of the user to be deleted.
-   * @returns A promise that resolves to the deleted {@link UserEntity}.
+   * @param {UserEntity} user - The UserEntity object containing the updated user details.
+   * The user object must have an existing id.
    *
-   * @remarks
-   * This function sends a request to the data source to delete the user with the specified `id`.
-   * It then converts the response to a {@link UserEntity} and returns it.
-   *
-   * @throws Will throw an error if the data source operation fails.
+   * @returns {Promise<UserEntity>} A promise that resolves to the updated UserEntity.
+   * The returned UserEntity will have the same id as the input user.
    */
-  async deleteUser(id: number): Promise<UserEntity> {
-    const res = await this.dataSource.deleteUser(id);
-    const userDeleted = new UserModel(
+  async updateUser(user: UserEntity): Promise<UserEntity> {
+    const res = await this.dataSource.updateUser(new UserModel(
+      user.id,
+      user.name,
+      user.age,
+      { country: user.country }
+    ));
+
+    const userModel = new UserModel(
       res.id,
       res.firstName,
       res.age,
       { country: res.address.country }
     );
-    return userDeleted.toUserEntity(userDeleted);
+
+    return userModel.toUserEntity();
+  }
+
+  async deleteUser(id: string): Promise<UserEntity> {
+    const res = await this.dataSource.deleteUser(id);
+
+    const userModel = new UserModel(
+      res.id,
+      res.firstName,
+      res.age,
+      { country: res.address.country }
+    );
+
+    return userModel.toUserEntity();
   }
 }
 

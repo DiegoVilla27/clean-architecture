@@ -1,24 +1,24 @@
 /**
  * Represents a user entity with basic personal information.
  *
- * @property {number} id - The unique identifier for the user.
+ * @property {string} id - The unique identifier for the user.
  * @property {string} name - The name of the user.
  * @property {number} age - The age of the user.
  * @property {string} country - The country of residence of the user.
  *
  * @constructor
- * @param {number} id - Initializes the user's unique identifier.
+ * @param {string} id - Initializes the user's unique identifier.
  * @param {string} name - Initializes the user's name.
  * @param {number} age - Initializes the user's age.
  * @param {string} country - Initializes the user's country of residence.
  */
 export class UserEntity {
-  id: number;
+  id: string;
   name: string;
   age: number;
   country: string;
 
-  constructor(id: number, name: string, age: number, country: string) {
+  constructor(id: string, name: string, age: number, country: string) {
     this.id = id;
     this.name = name;
     this.age = age;
