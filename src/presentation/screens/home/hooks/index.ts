@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import userUseCases from '../../../../core/services/users';
-import { UserEntity } from '../../../../domain/entities/users';
+import userUseCases from '@core/services/users';
+import { UserEntity } from '@domain/entities/users';
 
 /**
  * Custom hook to manage user data operations.

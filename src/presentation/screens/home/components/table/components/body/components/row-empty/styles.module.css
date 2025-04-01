@@ -1,0 +1,6 @@
+@import "@assets/css/tailwind/shared.css";
+
+.td {
+  @apply 
+  pt-4;
+}

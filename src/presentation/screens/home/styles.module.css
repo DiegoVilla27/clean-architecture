@@ -1,0 +1,10 @@
+@import "@assets/css/tailwind/shared.css";
+
+.list {
+  @apply 
+  bg-slate-200 
+  h-full
+  m-4
+  p-4
+  rounded-2xl;
+}

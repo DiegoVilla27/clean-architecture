@@ -1,5 +1,5 @@
-import ENVIRONMENTS from "../../../core/environments";
-import { UserModel, UserModelResponse } from "../../models/users";
+import ENVIRONMENTS from "@core/environments";
+import { UserModel, UserModelResponse } from "@data/models/users";
 
 /**
  * A data source class for interacting with the user API.

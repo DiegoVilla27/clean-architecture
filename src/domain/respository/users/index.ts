@@ -1,4 +1,4 @@
-import { UserEntity, UserEntityResponse } from "../../entities/users";
+import { UserEntity, UserEntityResponse } from "@domain/entities/users";
 
 /**
  * Abstract class representing a repository for managing user entities.

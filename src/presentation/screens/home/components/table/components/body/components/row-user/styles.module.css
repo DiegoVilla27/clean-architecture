@@ -1,0 +1,37 @@
+@import "@assets/css/tailwind/shared.css";
+
+.td {
+  @apply 
+  pt-4;
+}
+
+.btnBox {
+  @apply 
+  flex
+  justify-center
+  items-center
+  gap-4;
+}
+
+.btn {
+  @apply 
+  w-1/2
+  px-4
+  py-2
+  rounded-md
+  text-white
+  cursor-pointer
+  transition-all;
+}
+
+.btnEdit {
+  @apply 
+  bg-blue-600
+  hover:bg-blue-700;
+}
+
+.btnDelete {
+  @apply 
+  bg-red-800
+  hover:bg-red-900;
+}

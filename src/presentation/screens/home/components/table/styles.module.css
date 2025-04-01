@@ -1,0 +1,8 @@
+@import "@assets/css/tailwind/shared.css";
+
+.table {
+  @apply
+  h-full 
+  w-full
+  text-black;
+}

@@ -1,0 +1,16 @@
+@import "@assets/css/tailwind/shared.css";
+
+.thead {
+  @apply text-center;
+}
+
+.thead {
+  @apply border-b-[0.5px]
+  border-gray-400
+  text-2xl
+  uppercase;
+}
+
+.th {
+  @apply pb-4;
+}

@@ -1,7 +1,7 @@
-import { UserEntity, UserEntityResponse } from "../../../domain/entities/users";
-import UserRepository from "../../../domain/respository/users";
-import UserApiDataSource from "../../data-source/users";
-import { UserModel, UserModelResponse } from "../../models/users";
+import { UserEntity, UserEntityResponse } from "@domain/entities/users";
+import UserRepository from "@domain/respository/users";
+import UserApiDataSource from "@data/data-source/users";
+import { UserModel, UserModelResponse } from "@data/models/users";
 
 /**
  * Implementation of the UserRepository interface using a data source.
