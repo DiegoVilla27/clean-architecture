@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import userUseCases from '@core/services/users';
 import { UserEntity } from '@domain/entities/users';
-import { ETypeToast, IToast } from '@presentation/shared/toast';
+import UserServicesSingleton from '@core/services/users';
+import { ETypeToast, IToast } from '@presentation/shared/toast/interfaces';
+
+const userServices = UserServicesSingleton.getInstance().getUserUseCase();
 
 /**
  * Custom hook to manage user data and toast notifications.
@@ -10,13 +12,6 @@ import { ETypeToast, IToast } from '@presentation/shared/toast';
  * while also managing toast notifications for each operation. It initializes
  * with an empty list of users and no active toast. The hook returns the current
  * list of users, the active toast, and functions to create, edit, and delete users.
- * 
- * @returns {Object} An object containing:
- * - `users`: The current list of users.
- * - `toast`: The current toast notification, if any.
- * - `createFn`: Function to create a new user.
- * - `editFn`: Function to edit an existing user.
- * - `deleteFn`: Function to delete a user by ID.
  */
 export const useUsers = () => {
 
@@ -28,24 +23,24 @@ export const useUsers = () => {
   }, []);
 
   const fetchUsers = async () => {
-    const allUsers = await userUseCases.getAllUsers();
+    const allUsers = await userServices.getAllUsers();
     setUsers(allUsers.users);
   };
 
   const createFn = async (user: UserEntity) => {
-    const userCreated = await userUseCases.createUser(user);
+    const userCreated = await userServices.createUser(user);
     showToast(`User ${userCreated.name} created`, ETypeToast.SUCCESS);
     await fetchUsers();
   }
 
   const editFn = async (user: UserEntity) => {
-    const userUpdated = await userUseCases.updateUser(user);
+    const userUpdated = await userServices.updateUser(user);
     showToast(`User ${userUpdated.name} updated`, ETypeToast.SUCCESS);
     await fetchUsers();
   }
 
   const deleteFn = async (id: string) => {
-    const userDeleted = await userUseCases.deleteUser(id);
+    const userDeleted = await userServices.deleteUser(id);
     showToast(`User ${userDeleted.name} deleted`, ETypeToast.SUCCESS);
     await fetchUsers();
   }

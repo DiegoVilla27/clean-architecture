@@ -1,18 +1,6 @@
 import { useToast } from "./hooks";
+import { IToast } from "./interfaces";
 import styles from "./styles.module.css";
-
-export enum ETypeToast {
-  INFO = "info",
-  SUCCESS = "success",
-  WARNING = "warning",
-  ERROR = "error"
-}
-
-export interface IToast {
-  type: ETypeToast;
-  message: string;
-  duration?: number;
-}
 
 /**
  * Toast component that displays a temporary notification message.
